@@ -19,8 +19,10 @@ public class Book {
 
     @Column()
     @Size(max = 100000)
-    private String bookDascription;
-    @Column()
+    private String bookDescription;
+
+    @Column(name = "create_at")
+    @Temporal(TemporalType.DATE)
     private Date bookdate;
 
     public Book(){
@@ -30,7 +32,7 @@ public class Book {
     public Book(String maneBook, String maneAuthor, String bookDascription, Date bookDate){
         this.nameBook = maneBook;
         this.bookAuthor = maneAuthor;
-        this.bookDascription = bookDascription;
+        this.bookDescription = bookDascription;
         this.bookdate = bookDate;
     }
 
@@ -58,12 +60,12 @@ public class Book {
         this.bookAuthor = bookAuthor;
     }
 
-    public String getBookDascription() {
-        return bookDascription;
+    public String getBookDescription() {
+        return bookDescription;
     }
 
-    public void setBookDascription(String bookDascription) {
-        this.bookDascription = bookDascription;
+    public void setBookDescription(String bookDascription) {
+        this.bookDescription = bookDascription;
     }
 
     public Date getBookDate() {

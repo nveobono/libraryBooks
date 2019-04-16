@@ -14,14 +14,14 @@ public class bbdd {
     @Autowired
     RepositoryBooks repositoryBooks;
 
-    Date d1 = new Date(1999,12,31);
+
 
     @PostConstruct
     public void init(){
 
+        Date d1 = new Date();
 
-
-        Book b1 = new Book("La Biblia","Dios","", d1);
+        Book b1 = new Book("La Biblia","Dios","El libro más imoportante e inspirador del mundo, que ha llegado a cambiar e influenciar la vida de muchas personas y puede transformar la tuya tambien", d1);
         repositoryBooks.save(b1);
 
         Book b2 = new Book("Guerra Espiritual","Juan Manuel","", d1);

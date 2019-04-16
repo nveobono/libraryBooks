@@ -1,0 +1,19 @@
+<div class="row">
+<div class="card mb-3"  style="width: 18rem;" *ngFor="let book of books">
+    <img src="assets/images/logo.png" class="card-img-top" alt="...">
+    <div class="card-header">
+      <h5 class="card-title">{{ book.nameBook }}</h5>
+      <h6 class="card-title">{{ book.bookAuthor }}</h6>
+      <p class="card-text">Fecha Publicación: {{ book.bookdate }}</p>
+    </div>
+    <div class="card-body">
+      
+      <p class="card-text">{{ book.bookDescription }}</p>
+    </div>
+    <div class="card-footer">
+      <a href="#" class="btn btn-primary mb-1">Modificar</a><br>
+      <a href="#" class="btn btn-danger">Eliminar</a>
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary mb-3" [routerLink]="['/libros/libro']" type="button">Nuevo Libro</button>
