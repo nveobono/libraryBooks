@@ -17,7 +17,7 @@ export class BooksService{
     constructor(private http: HttpClient, private router: Router){}
 
     getBooks(): Observable<Book[]>{
-        return this.http.get(this.urlEndPoint).pipe(
+        return this.http.get<Book[]>(this.urlEndPoint).pipe(
             map(response => response as Book[])
         );
     }

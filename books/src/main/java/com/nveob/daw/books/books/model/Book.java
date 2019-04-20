@@ -10,7 +10,7 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idBook;
+    private Long id;
 
     private String nameBook;
 
@@ -35,13 +35,18 @@ public class Book {
         this.bookDescription = bookDascription;
         this.bookdate = bookDate;
     }
-
-    public long getIdBook() {
-        return idBook;
+    
+    @PrePersist
+    public void prePersist(){
+        bookdate = new Date();
     }
 
-    public void setIdBook(long idBook) {
-        this.idBook = idBook;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNameBook() {

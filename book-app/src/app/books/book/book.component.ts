@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
 import { Book } from '../book';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-book',
@@ -13,9 +13,23 @@ export class BookComponent implements OnInit {
   private book: Book = new Book();
   public titulo: string = 'Nuevo Libro';
 
-  constructor(private bookService: BooksService, private router: Router) { }
+  constructor(private bookService: BooksService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.getBookid()
+  }
+
+  public getBookid(): void{
+    this.activatedRoute.params.subscribe(
+      (params: any) => {
+        let id = params['id']
+        if(id){
+          this.bookService.getBook(id).subscribe(
+            (book: any) => this.book = book
+          )
+        }
+      }
+    )
   }
 
   public create(): void{
@@ -25,6 +39,14 @@ export class BookComponent implements OnInit {
       });
     console.log("ok")
     console.log(this.book);
+  }
+
+  public update(): void{
+    this.bookService.update(this.book).subscribe(
+      (book: any) => {
+        this.router.navigate(['/libros'])
+      }
+    )
   }
 
 }
